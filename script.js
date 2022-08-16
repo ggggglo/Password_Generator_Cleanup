@@ -1,21 +1,28 @@
+// Selecting the generate id in the HTML
 var generateBtn = document.querySelector("#generate");
 
+// Variables that will define the characters in the password
 var lower = ["qwertyuiopasdfghjklzxcvbnm"]
 var upper= ["QWERTYUIOPASDFGHJKLZXCVBNM"]
 var numeric = 1234567890
 var characters = ["!@#$%^&*()"]
 
+// Variable in which the new password will be held
 var newPassword = ("")
-var generatedPassword = ("")
 
-function createPassword (){
-
+// Function that will create the new password
+function writePassword (){
+  // Window promt to choose the length of the password
   var length = window.prompt("Choose length of your password");
+    // Password has to be between 8 and 128 characters
     if (length >= 8 && length <= 128) {
       window.confirm ("Ok! Onto the next!")
      } else if (length < 8 || length > 128) {
       window.prompt ("Error! Please enter a number between 8 and 128")
     }
+
+    // Log to make sure it logs a number
+    console.log(length)
 
   var numbers = window.prompt("Do you want numbers in your password? Please type yes or no");
    if (numbers === "yes") {
@@ -60,24 +67,17 @@ function createPassword (){
     return;
   }
 
-  for(var i = 0; i < length.length ; i++ ) {
+  for(var i = 0; i < length; i++ ) {
     newPassword[Math.floor(Math.random() * newPassword.length)]
   }
-
-
-}
-
-createPassword();
-
-console.log(newPassword)
-
-
-
-// Write password to the #password input
 
 var passwordText = document.querySelector("#password");
 passwordText.value = (newPassword);
 
+}
+
+writePassword();
+console.log(newPassword)
 
 
 // Add event listener to generate button
