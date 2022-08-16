@@ -4,9 +4,12 @@ var lower = ["qwertyuiopasdfghjklzxcvbnm"]
 var upper= ["QWERTYUIOPASDFGHJKLZXCVBNM"]
 var numeric = 1234567890
 var characters = ["!@#$%^&*()"]
+
 var newPassword = ("")
+var generatedPassword = ("")
 
 function createPassword (){
+
   var length = window.prompt("Choose length of your password");
     if (length >= 8 && length <= 128) {
       window.confirm ("Ok! Onto the next!")
@@ -45,9 +48,10 @@ function createPassword (){
     window.prompt ("Please type yes or no")
     return;
   }
-  var lowerCase = window.prompt("Do you want lowercase characters in your password? Please type yes or no");
+  
+  var lowerCase = window.prompt("Do you want lowercase characters in your password? ");
   if (lowerCase === "yes") {
-    window.confirm ("Ok! Onto the next!")
+    window.confirm ("Ok! Ready to generate your password!")
     newPassword += lower
    } else if (lowerCase === "no") {
    window.confirm ("Ok! Ready to generate your password!")
@@ -56,20 +60,25 @@ function createPassword (){
     return;
   }
 
+  for(var i = 0; i < length.length ; i++ ) {
+    newPassword[Math.floor(Math.random() * newPassword.length)]
+  }
+
+
 }
 
 createPassword();
 
 console.log(newPassword)
 
+
+
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
 
-  passwordText.value = password;
+var passwordText = document.querySelector("#password");
+passwordText.value = (newPassword);
 
-}
+
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
