@@ -2,28 +2,28 @@
 var generateBtn = document.querySelector("#generate");
 
 // Variables that will define the characters in the password
-var lower = ["qwertyuiopasdfghjklzxcvbnm"]
-var upper= ["QWERTYUIOPASDFGHJKLZXCVBNM"]
-var numeric = 1234567890
-var characters = ["!@#$%^&*()"]
+var lower = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"]
+var upper= ["Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G","H","J","K","L","Z","X","C","V","B","N","M"]
+var numeric = [1,2,3,4,5,6,7,8,9,0]
+var characters = ["!,@,#,$,%,^,&,*,(,)"]
 
 // Variable in which the new password will be held
-var newPassword = ("")
+var newPassword = []
 
 // Function that will create the new password
 function writePassword (){
   // Window promt to choose the length of the password
-  var length = window.prompt("Choose length of your password");
+  var passwordLength = window.prompt("Choose length of your password");
     // Password has to be between 8 and 128 characters
-    if (length >= 8 && length <= 128) {
+    if (passwordLength >= 8 && passwordLength <= 128) {
       window.confirm ("Ok! Onto the next!")
       // If password isn't between 8 and 128 characters it will prompt a error
-     } else if (length < 8 || length > 128) {
+     } else if (passwordLength < 8 || passwordLength > 128) {
       window.prompt ("Error! Please enter a number between 8 and 128")
     }
 
     // Log to make sure it logs a number
-    console.log(length)
+    console.log(passwordLength)
 
   // Window promt to choose if numbers should be included in the password
   var numbers = window.prompt("Do you want numbers in your password? Please type yes or no");
@@ -85,13 +85,18 @@ function writePassword (){
   }
 
   // Loop in order to choose charactrs given the specified length. NOT WORKING
-  for(var i = 0; i < length; i++ ) {
-    newPassword[Math.floor(Math.random() * newPassword.length)]
-  }
 
+  for(var i = 0; i < passwordLength; i++) {
+    var passPassword = [newPassword[Math.floor(Math.random() * newPassword.length)]];
+    console.log(passPassword);
+    //var all = passPassword.join(generatedPassword);
+    //console.log(all);
+    //return all;
+  }
+  
   // Variable for the new password to show up in the password area
-var passwordText = document.querySelector("#password");
-passwordText.value = (newPassword);
+  var passwordText = document.querySelector("#password");
+  passwordText.value = (newPassword);
 
 }
 
