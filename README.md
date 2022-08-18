@@ -19,7 +19,7 @@ This project consisted in cleaning up and creating code in order for a website t
 # What was done
 - A function that holds the generation of the password was created
 - An object was created in order to hold the properties related to users choice (numbers, special, lower, upper character)
-- New arrays that will gold the newly generated password were created
+- New arrays that will hold the newly generated password were created
 - Variables for each window prompt for user selection (numbers, special, lower, upper character) were cerated
 - For loop that chooses random characteres based on length selected by user was created
 
