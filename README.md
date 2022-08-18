@@ -31,3 +31,14 @@ This is the link to the GitHub Repo: https://github.com/ggggglo/Password_Generat
 This is the link to the deployed website: https://ggggglo.github.io/Password_Generator_Cleanup/
 
 # Images
+
+This is what the website and prompt windows look like
+
+![Site part 1](./assets/images/1.png)
+![Site part 2](./assets/images/2.png)
+![Site part 3](./assets/images/3.png)
+![Site part 4](./assets/images/4.png)
+![Site part 5](./assets/images/5.png)
+![Site part 6](./assets/images/6.png)
+![Site part 7](./assets/images/7.png)
+
