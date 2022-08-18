@@ -26,4 +26,8 @@ This project consisted in cleaning up and creating code in order for a website t
 
 # Links
 
+This is the link to the GitHub Repo: https://github.com/ggggglo/Password_Generator_Cleanup
+
+This is the link to the deployed website: https://ggggglo.github.io/Password_Generator_Cleanup/
+
 # Images
