@@ -1,17 +1,17 @@
 // Selecting the generate id in the HTML
 var generateBtn = document.querySelector("#generate");
 
-// Variables that will define the characters in the password
-var lower = ["q","w","e","r","t","y","u","i","o","p","a","s","d","f","g","h","j","k","l","z","x","c","v","b","n","m"]
-var upper= ["Q","W","E","R","T","Y","U","I","O","P","A","S","D","F","G","H","J","K","L","Z","X","C","V","B","N","M"]
-var numeric = [1,2,3,4,5,6,7,8,9,0]
-var characters = ["!,@,#,$,%,^,&,*,(,)"]
-
-// Variable in which the new password will be held
-var newPassword = []
-
 // Function that will create the new password
 function writePassword (){
+
+// Variables that will define the characters in the password
+var specs = {
+  lower: "qwertyuiopasdfghjklzxcvbnm",
+  upper: "QWERTYUIOPASDFGHJKLZXCVBNM",
+  numeric: "1234567890",
+  characters: "~!@#$%^&*()_+"
+};
+
   // Window promt to choose the length of the password
   var passwordLength = window.prompt("Choose length of your password");
     // Password has to be between 8 and 128 characters
@@ -20,37 +20,46 @@ function writePassword (){
       // If password isn't between 8 and 128 characters it will prompt a error
      } else if (passwordLength < 8 || passwordLength > 128) {
       window.prompt ("Error! Please enter a number between 8 and 128")
+      return null;
+    } else {
+      window.prompt ("Error! Please enter a number between 8 and 128")
+      return null;
     }
 
     // Log to make sure it logs a number
     console.log(passwordLength)
 
+    // Variable in which the new password will be held
+    var newPassword = "";
+    var genPassword = "";
+
+
   // Window promt to choose if numbers should be included in the password
   var numbers = window.prompt("Do you want numbers in your password? Please type yes or no");
     // If user types yes or no, it will take it to the next prompt window
    if (numbers === "yes") {
-    window.confirm ("Ok! Onto the next!")
     // If user types yes, numbers will be added to the password
-    newPassword += numeric;
+    newPassword += specs.numeric;
+    window.confirm ("Ok! Onto the next!");
    } else if (numbers === "no") {
-   window.confirm ("Ok! Onto the next!")
+   window.confirm ("Ok! Onto the next!");
    // If user types anything besides yes or no it will ask again
    } else {
-    window.prompt ("Please type yes or no")
+    window.prompt ("Please type yes or no");
    }
 
   // Window promt to choose if special characters should be included in the password
   var specialCharacters = window.prompt("Do you want special characters in your password? Please type yes or no");
    // If user types yes or no, it will take it to the next prompt window
    if (specialCharacters === "yes") {
-    window.confirm ("Ok! Onto the next!")
-    // If user types yes, special characters will be added to the password
-    newPassword += characters
+     // If user types yes, special characters will be added to the password
+     newPassword += specs.characters;
+    window.confirm ("Ok! Onto the next!");
    } else if (specialCharacters === "no") {
-   window.confirm ("Ok! Onto the next!")
+   window.confirm ("Ok! Onto the next!");
    // If user types anything besides yes or no it will ask again
   } else {
-    window.prompt ("Please type yes or no")
+    window.prompt ("Please type yes or no");
     return;
   }
 
@@ -58,14 +67,14 @@ function writePassword (){
   var upperCase = window.prompt("Do you want uppercase characters in your password? Please type yes or no");
   // If user types yes or no, it will take it to the next prompt window
     if (upperCase === "yes") {
-    window.confirm ("Ok! Onto the next!")
-    // If user types yes, uppercase characters will be added to the password
-    newPassword += upper
+      // If user types yes, uppercase characters will be added to the password
+    newPassword += specs.upper;
+    window.confirm ("Ok! Onto the next!");
     } else if (upperCase === "no") {
-    window.confirm ("Ok! Onto the next!")
+    window.confirm ("Ok! Onto the next!");
     // If user types anything besides yes or no it will ask again
     } else {
-    window.prompt ("Please type yes or no")
+    window.prompt ("Please type yes or no");
     return;
   }
   
@@ -73,38 +82,30 @@ function writePassword (){
   var lowerCase = window.prompt("Do you want lowercase characters in your password? ");
   // If user types yes or no, it will take it to the next prompt window
   if (lowerCase === "yes") {
-    window.confirm ("Ok! Ready to generate your password!")
     // If user types yes, lowercase characters will be added to the password
-    newPassword += lower
+    newPassword += specs.lower;
+    window.confirm ("Ok! Ready to generate your password!");
    } else if (lowerCase === "no") {
-   window.confirm ("Ok! Ready to generate your password!")
+   window.confirm ("Ok! Ready to generate your password!");
    // If user types anything besides yes or no it will ask again
   } else {
-    window.prompt ("Please type yes or no")
+    window.prompt ("Please type yes or no");
     return;
   }
 
   // Loop in order to choose charactrs given the specified length. NOT WORKING
 
-  for(var i = 0; i < passwordLength; i++) {
-    var passPassword = [newPassword[Math.floor(Math.random() * newPassword.length)]];
-    console.log(passPassword);
-    //var all = passPassword.join(generatedPassword);
-    //console.log(all);
-    //return all;
+  for(let i = 0; i < passwordLength; i++ ) {
+    genPassword += newPassword[Math.floor(Math.random() * genPassword.length)]
   }
-  
-  // Variable for the new password to show up in the password area
+  return newPassword;
+
+  }
+
+  // Variable selecting where in the HTML to input the final password
+
   var passwordText = document.querySelector("#password");
-  passwordText.value = (newPassword);
-
-}
-
-// Declaring writePassword function
-writePassword();
-
-// Log to make sure new passwords are being created 
-console.log(newPassword)
+  passwordText.value = writePassword();
 
 
 // Add event listener to generate button
